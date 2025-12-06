@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Sets character encoding to UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile -->
+  <title>Country News & Info</title> <!-- Page title shown in browser tab -->
+
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container"> <!-- Main wrapper for the page content -->
+  
+  <h1>Country News & Info Dashboard</h1> <!-- Main page heading -->
+
+  <!-- Form where the user enters a country name -->
+  <form id="countryForm">
+    <label for="countryInput">Enter country name (e.g., United States, Canada):</label>
+    
+    <!-- Text field for country input -->
+    <input type="text" id="countryInput" placeholder="Country name">
+    
+    <!-- Form submit button -->
+    <button type="submit" class="submit">Get Info</button>
+  </form>
+
+  <!-- Section where country info and news will be displayed -->
+  <section id="result"></section>
+
+  <!-- Section listing all APIs / external data sources -->
+  <section id="apiSources">
+    <h2>Data Sources / APIs Used</h2>
+    <ul>
+      <!-- Link to Rest Countries API -->
+      <li>
+        <a href="https://restcountries.com/" target="_blank">Rest Countries API</a> – Provides country information
+      </li>
+
+      <!-- Link to NewsAPI -->
+      <li>
+        <a href="https://newsapi.org/" target="_blank">NewsAPI</a> – Provides latest news articles
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- Link to external JavaScript file containing all logic -->
+<script src="script.js"></script>
+
+</body>
+</html>
