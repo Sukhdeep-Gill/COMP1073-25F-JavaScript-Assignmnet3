@@ -7,15 +7,17 @@ Attributions:
   • MDN Web Docs (fetch API and DOM manipulation)
 
 - Country News Feature:
-  Implemented using concepts learned from:
-  • NewsAPI Official Documentation
-  • MDN Web Docs (fetch API and promises)
+   • MDN Web Docs (fetch API and promises)
+   • Country News Feature:
+   • Implemented using concepts learned from:
+   • GNews API Official Documentation
+
 --------------------------------------------------------------
 */
 
 
-// STEP 1: API Key for NewsAPI
-const NEWS_API_KEY = "a201847d00494eb1a45d7f2915403379";
+// STEP 1: API Key for GNews
+const NEWS_API_KEY = "2c86cbbe72f044c05ece234aff55d19d";
 
 // STEP 2: Grab DOM elements
 const countryForm = document.querySelector('#countryForm');
@@ -100,9 +102,9 @@ function displayCountryInfo(country) {
 
     // STEP 5e: Append the container to the result section
     resultSection.appendChild(countryContainer);
-        // STEP 6: Fetch news for this country
-    const newsCode = country.cca2.toLowerCase();
-const newsURL = `https://newsapi.org/v2/everything?q=${country.name.common}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
+    // STEP 6: Fetch news for this country using GNews
+    const query = `${country.name.common} ${country.capital ? country.capital[0] : ""} news`;
+    const newsURL = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=10&apikey=${NEWS_API_KEY}`;
 
 
     fetch(newsURL)
@@ -141,15 +143,15 @@ function displayNews(newsData) {
             link.textContent = "Read more";
             articleElem.appendChild(link);
 
-            if (article.urlToImage) {
-                const img = document.createElement('img');
-                img.src = article.urlToImage;
-                img.alt = "News image";
-                img.style.width = "200px";
-                img.style.display = "block";
-                img.style.marginTop = "5px";
-                articleElem.appendChild(img);
-            }
+           if (article.image) { 
+                 const img = document.createElement('img');
+               img.src = article.image;  //  GNews field
+               img.alt = "News image";
+               img.style.width = "200px";
+               img.style.display = "block";
+               img.style.marginTop = "5px";
+             articleElem.appendChild(img);
+}
 
             newsContainer.appendChild(articleElem);
         });
