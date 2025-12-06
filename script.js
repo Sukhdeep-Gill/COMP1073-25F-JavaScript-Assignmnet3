@@ -103,8 +103,9 @@ function displayCountryInfo(country) {
     // STEP 5e: Append the container to the result section
     resultSection.appendChild(countryContainer);
     // STEP 6: Fetch news for this country using GNews
-    const query = `${country.name.common} ${country.capital ? country.capital[0] : ""} news`;
-    const newsURL = `https://cors-anywhere.herokuapp.com/https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=10&apikey=${NEWS_API_KEY}`;
+ const proxy = "https://cors-anywhere.herokuapp.com/";
+const newsURL = `${proxy}https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=10&apikey=${NEWS_API_KEY}`;
+
 
 
 
@@ -165,4 +166,5 @@ function displayNews(newsData) {
     // STEP 7c: Append news container to the result section
     resultSection.appendChild(newsContainer);
 }
+
 
